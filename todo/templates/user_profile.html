@@ -1,0 +1,20 @@
+<!-- templates/user_profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="path/to/bootstrap.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>User Profile: {{ user_profile.user.username }}</h2>
+        <h3>Tasks:</h3>
+        <ul>
+            {% for task in tasks %}
+                <li>{{ task.name }} - {{ task.description }} {% if task.completed %}(Completed){% endif %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Task Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your additional CSS or link to your custom stylesheet here -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Welcome, {{ request.user.username }}!</h2>
+        <p>Total Tasks: {{ tasks.count }}</p>
+
+        <!-- Incomplete Tasks -->
+        <h3>Incomplete Tasks:</h3>
+        <ul class="list-group">
+            {% for task in tasks %}
+                {% if not task.completed %}
+                    <li class="list-group-item">
+                        {{ task.name }} - {{ task.description }}
+                        <a href="{% url 'update_task' task.id %}" class="btn btn-info btn-sm float-right">Update</a>
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-danger btn-sm float-right mr-2">Delete</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <!-- Completed Tasks -->
+        <h3>Completed Tasks:</h3>
+        <ul class="list-group">
+            {% for task in tasks %}
+                {% if task.completed %}
+                    <li class="list-group-item">
+                        {{ task.name }} - {{ task.description }}
+                        <a href="{% url 'update_task' task.id %}" class="btn btn-info btn-sm float-right">Update</a>
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-danger btn-sm float-right mr-2">Delete</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'create_task' %}" class="btn btn-success mt-3">Create New Task</a>
+        <br>
+        <a href="{% url 'logout' %}" class="btn btn-secondary mt-3">Logout</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add your additional JavaScript or link to your custom scripts here -->
+</body>
+</html>
