@@ -1,37 +1,47 @@
-<!-- templates/register.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>User Registration</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Add your additional CSS or link to your custom stylesheet here -->
+    <title>Register</title>
+    <!-- Bootstrap CSS link (replace 'path/to/bootstrap.css' with the actual path or use a CDN) -->
+    <link rel="stylesheet" href="path/to/bootstrap.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        form {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>User Registration</h2>
-        <form method="post" action="">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_username">Username:</label>
-                <input type="text" id="id_username" name="username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="id_password1">Password:</label>
-                <input type="password" id="id_password1" name="password1" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="id_password2">Confirm Password:</label>
-                <input type="password" id="id_password2" name="password2" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
-        </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Add your additional JavaScript or link to your custom scripts here -->
+    <form method="post" action="">
+        {% csrf_token %}
+        <h2>Register</h2>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
 </body>
 </html>
